@@ -13,6 +13,8 @@ database_file = "sqlite:///{}".format(os.path.join(project_dir, "listdatabase.db
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = database_file
 
+heroku = Heroku(app)
+
 db = SQLAlchemy(app)
 
 class List(db.Model):
@@ -55,5 +57,6 @@ def delete():
 	db.session.commit()
 	return redirect("/")
 
-if __name__ == "__main__":
-	app.run(debug=True)
+if __name__ == ' __main__':
+	#app.debug = True
+	app.run()
