@@ -1,0 +1,29 @@
+<html>
+  <body>
+	<h1>shopplix</h1>
+	<form method="POST" action="/">
+		<input type="text" name="title">
+		<input type="submit" value="Add">
+	</form>
+
+	<h1>Lists</h1>
+	<table>
+	{% for list in lists %}
+
+		<p>{{list.title}}</p>
+
+		<form method="POST" action="./update">
+			<input type="hidden" value="{{list.title}}" name="oldtitle">
+			<input type="text" value="{{list.title}}" name="newtitle">
+			<input type="submit" value="Update">
+		</form>
+
+		<form method="POST" action="./delete">
+  			<input type="hidden" value="{{list.title}}" name="title">
+  			<input type="submit" value="Delete">
+		</form>
+
+	{% endfor %}
+	</table>
+  </body>
+</html>
