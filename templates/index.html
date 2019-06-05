@@ -8,22 +8,26 @@
 
 	<h1>Lists</h1>
 	<table>
-	{% for list in lists %}
-
-		<p>{{list.title}}</p>
-
-		<form method="POST" action="./update">
-			<input type="hidden" value="{{list.title}}" name="oldtitle">
-			<input type="text" value="{{list.title}}" name="newtitle">
-			<input type="submit" value="Update">
-		</form>
-
-		<form method="POST" action="./delete">
-  			<input type="hidden" value="{{list.title}}" name="title">
-  			<input type="submit" value="Delete">
-		</form>
-
-	{% endfor %}
+		{% for list in lists %}
+			<tr>
+				<td>
+					<p>{{list.title}}</p>
+				</td>
+				<td>
+					<form method="POST" action="./update">
+						<input type="hidden" value="{{list.title}}" name="oldtitle">
+						<input type="text" value="{{list.title}}" name="newtitle">
+						<input type="submit" value="Update">
+					</form>
+				</td>
+				<td>
+					<form method="POST" action="./delete">
+						<input type="hidden" value="{{list.title}}" name="title">
+						<input type="submit" value="Delete">
+					</form>
+				</td>
+			</tr>
+		{% endfor %}
 	</table>
   </body>
 </html>
