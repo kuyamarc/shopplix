@@ -1,15 +1,9 @@
 import os
-import sys
-import json
-
 
 from flask import Flask
 from flask import render_template
 from flask import request
 from flask import redirect
-from flask import url_for
-
-from flask_heroku import Heroku
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -18,8 +12,6 @@ database_file = "sqlite:///{}".format(os.path.join(project_dir, "listdatabase.db
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = database_file
-
-heroku = Heroku(app)
 
 db = SQLAlchemy(app)
 
@@ -63,6 +55,5 @@ def delete():
 	db.session.commit()
 	return redirect("/")
 
-if __name__ == ' __main__':
-	#app.debug = True
-	app.run()
+if __name__ == "__main__":
+	app.run(debug=True)
